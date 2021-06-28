@@ -1,0 +1,52 @@
+button {
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 35px;
+    border-color: transparent transparent transparent hsl(0, 0%, 35%);
+    transition: 300ms all ease;
+    cursor: pointer;
+}
+
+#play {
+    border-style: solid;
+    border-width: 18px 0 18px 30px;
+}
+
+#pause {
+    border-style: double;
+    border-width: 0px 0 0px 30px;
+}
+
+button:hover {
+    border-color: transparent transparent transparent hsl(0, 0%, 15%);
+}
+
+@media screen and (max-width: 640px) {
+    .img_artist {
+        width: 75%;
+    }
+    #box_artist {
+        width: 85%;
+        padding: .3em;
+    }
+    #names {
+        margin: 0;
+        padding: 0 0 0 8px;
+        font-size: 10px;
+    }
+    h2 {
+        font-size: 12px;
+        padding-right: .5em;
+    }
+    #play {
+        border-width: 10px 0 10px 18px;
+    }
+    #pause {
+        border-width: 0px 0 0px 15px;
+    }
+    button {
+        height: 20px;
+    }
+}

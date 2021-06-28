@@ -1,0 +1,136 @@
+@keyframes popInTop {
+    0% {
+        -webkit-transform: translate3d(0, -200px, 0) scale3d(0.1, 0.1, 0.1);
+        transform: translate3d(0, -200px, 0) scale3d(0.1, 0.1, 0.1);
+        opacity: 0
+    }
+    40% {
+        opacity: 1;
+        -webkit-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+        animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+        -webkit-transform: translate3d(0, 0, 0) scale3d(1.08, 1.08, 1.08);
+        transform: translate3d(0, 0, 0) scale3d(1.08, 1.08, 1.08)
+    }
+    60% {
+        -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+        animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+        -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
+    }
+    80% {
+        -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+        animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+        -webkit-transform: translate3d(0, 0, 0) scale3d(1.03, 1.03, 1.03);
+        transform: translate3d(0, 0, 0) scale3d(1.03, 1.03, 1.03)
+    }
+    100% {
+        -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
+    }
+}
+
+.bgimg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url("../src/images/Background_Desktop.jpg");
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+#spotifyLogo {
+    -webkit-animation-name: popInTop;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation-name: popInTop;
+    animation-duration: 2s;
+}
+
+#container img {
+    padding: 0 0 4em 0;
+    margin-top: 10em;
+    height: 100%;
+    width: 100%;
+    -webkit-animation-name: popInTop;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation-name: popInTop;
+    animation-duration: 2s;
+}
+
+#redirectLink {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    font-style: oblique;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    background-color: #ffffff;
+    text-align: center;
+    position: relative;
+    font-size: 18px;
+    box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+    border: none;
+    border-radius: 1em;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-animation-name: popInTop;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation-name: popInTop;
+    animation-duration: 2s;
+}
+
+#redirectLink:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 16px 30px -18px inset;
+    transition: 0.5s;
+}
+
+#container {
+    margin-left: 3em;
+    height: 25%;
+    width: 25%;
+}
+
+#link {
+    color: #616467;
+    text-decoration: none;
+    text-align: center;
+}
+
+@media screen and (max-width:640px),
+screen and (max-height: 340px) {
+    .bgimg {
+        position: absolute;
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("../src/images/Background_Mobile.jpg");
+        background-position: center;
+        background-size: cover;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+    }
+    #container {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    #container img {
+        width: 30%;
+        margin: 3em 0 0 0;
+    }
+    #redirectLink {
+        position: absolute;
+        bottom: 20%;
+        margin: 0 10% 0 10%;
+    }
+}
