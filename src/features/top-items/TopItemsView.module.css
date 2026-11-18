@@ -1,0 +1,51 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+.body {
+    position: relative;
+    flex: 1;
+    isolation: isolate;
+}
+
+/* Ambient colour from the #1 artwork, fading into the ground. Kept dark so text contrast holds. */
+.wash {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -1;
+    height: min(40rem, 90vh);
+    background-color: var(--wash, transparent);
+    opacity: 0.55;
+    mask-image: linear-gradient(to bottom, #000 0%, rgb(0 0 0 / 0.6) 45%, transparent 100%);
+    transition: background-color 600ms ease;
+    pointer-events: none;
+}
+
+.main {
+    width: 100%;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-gutter);
+}
+
+.listHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-5);
+    margin-bottom: var(--space-3);
+}
+
+.listTitle {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.listNote {
+    color: var(--color-text-2);
+    font-size: var(--text-sm);
+}

@@ -1,0 +1,107 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-ribbon.html"
+        ],
+        "createdAt": "2026-11-18T02:25:13.593Z",
+        "reason": "assistant: unchosen decision-round sketch, not shipped, gitignored; small-caps tracking was the challenger's own grammar"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-ribbon.html"
+        ],
+        "createdAt": "2026-11-18T02:25:13.646Z",
+        "reason": "assistant: unchosen decision-round sketch, not shipped, gitignored; archival buff was the challenger's catalog palette"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "arial narrow",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-18T02:43:25.286Z",
+        "reason": "assistant: unchosen/superseded decision-round sketch, not shipped, gitignored; font belonged to that candidate direction"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "marker felt",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-18T02:43:25.339Z",
+        "reason": "assistant: unchosen/superseded decision-round sketch, not shipped, gitignored; font belonged to that candidate direction"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "arial narrow",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-18T02:43:25.391Z",
+        "reason": "assistant: unchosen/superseded decision-round sketch, not shipped, gitignored; font belonged to that candidate direction"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "georgia",
+        "files": [
+          ".impeccable/mocks/decision/challenger-ribbon.html"
+        ],
+        "createdAt": "2026-11-18T02:43:25.441Z",
+        "reason": "assistant: unchosen/superseded decision-round sketch, not shipped, gitignored; font belonged to that candidate direction"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "arial narrow",
+        "files": [
+          ".impeccable/mocks/decision/challenger-stepseq.html"
+        ],
+        "createdAt": "2026-11-18T02:43:25.488Z",
+        "reason": "assistant: unchosen/superseded decision-round sketch, not shipped, gitignored; font belonged to that candidate direction"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#000",
+        "files": [
+          "src/features/top-items/TopItemsView.module.css"
+        ],
+        "createdAt": "2026-11-18T02:44:47.498Z",
+        "reason": "assistant: value inside mask-image, used only as an alpha stop, not a rendered colour"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(0 0 0 / 0.6)",
+        "files": [
+          "src/features/top-items/TopItemsView.module.css"
+        ],
+        "createdAt": "2026-11-18T02:44:47.547Z",
+        "reason": "assistant: value inside mask-image, used only as an alpha stop, not a rendered colour"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#ffffff",
+        "files": [
+          "src/components/Button.module.css"
+        ],
+        "createdAt": "2026-11-18T02:44:47.600Z",
+        "reason": "assistant: primary-button hover state value, recorded as a state value in DESIGN.md by the documenter"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "0.8125rem",
+        "files": [
+          "src/features/top-items/components/TopBar.module.css"
+        ],
+        "createdAt": "2026-11-18T02:44:47.650Z",
+        "reason": "assistant: compact segmented-control label on phones so both switches fit one row at 390px; verified by capture"
+      }
+    ]
+  }
+}

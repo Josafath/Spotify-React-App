@@ -1,0 +1,87 @@
+.wrap {
+    padding-top: clamp(var(--space-6), 5vw, var(--space-8));
+}
+
+.block {
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-2);
+    animation: pulse 1.6s ease-in-out infinite;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: clamp(9rem, 22vw, 20rem) 1fr;
+    align-items: end;
+    gap: clamp(var(--space-5), 4vw, var(--space-8));
+    padding-bottom: var(--space-7);
+}
+
+.art {
+    aspect-ratio: 1;
+    border-radius: var(--radius-art);
+}
+
+.lines {
+    display: grid;
+    gap: var(--space-3);
+    flex: 1;
+}
+
+.title {
+    width: min(32rem, 90%);
+    height: clamp(2.25rem, 5vw, 4.5rem);
+}
+
+.line {
+    width: min(20rem, 70%);
+    height: 1rem;
+}
+
+.short {
+    width: min(12rem, 45%);
+    height: 0.875rem;
+}
+
+.rows {
+    display: grid;
+    border-top: 1px solid var(--color-line);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    min-height: 4.5rem;
+    padding-left: 6.5rem;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.thumb {
+    width: 3rem;
+    height: 3rem;
+    flex: none;
+    border-radius: 4px;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 0.55;
+    }
+}
+
+@media (max-width: 40rem) {
+    .hero {
+        grid-template-columns: clamp(6.5rem, 30vw, 8rem) minmax(0, 1fr);
+        align-items: center;
+        gap: var(--space-4);
+        padding-bottom: var(--space-6);
+    }
+
+    .title {
+        height: 2rem;
+    }
+
+    .row {
+        padding-left: 2.25rem;
+    }
+}
