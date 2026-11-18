@@ -73,7 +73,7 @@ body {
     align-items: center;
 }
 
-#top_artists_component input {
+.top_artists_component input {
     font-family: 'Times New Roman', Times, serif;
     font-weight: 700;
     font-size: 16px;
@@ -91,14 +91,14 @@ body {
     animation-duration: 1s
 }
 
-#top_artists_component input:focus {
+.top_artists_component input:focus {
     background-color: hsl(120, 3%, 93%);
     transition: 1s;
     border: 2px white solid;
     color: hsl(0, 0%, 23%);
 }
 
-#box_artist {
+.box_artist {
     margin: 1.5em;
     padding: 1em;
     width: 90%;
@@ -112,7 +112,7 @@ body {
     animation-duration: 1.5s;
 }
 
-#grid_box {
+.grid_box {
     display: grid;
     grid-template-columns: 10% 15% 60% auto;
     justify-items: center;
@@ -125,11 +125,11 @@ body {
     border-radius: 0.3em;
 }
 
-#genres {
+.genres {
     color: hsl(0, 0%, 57%);
 }
 
-#names {
+.names {
     justify-self: start;
 }
 
@@ -209,21 +209,21 @@ body {
         margin-top: 1em;
         padding: 1em;
     }
-    #top_artists_component input {
+    .top_artists_component input {
         font-weight: 800;
         font-size: 12px;
         border-radius: 0.5em;
         padding: 4px 12px 4px 12px;
         justify-content: space-around;
     }
-    #box_artist {
+    .box_artist {
         width: 85%;
         padding: 0.3em;
     }
     .img_artist {
         width: 75%;
     }
-    #names {
+    .names {
         margin: 0;
         padding: 0 0 0 12px;
         font-size: 10px;

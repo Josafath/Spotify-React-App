@@ -7,13 +7,13 @@ export default function TrackList({ tracks }) {
         <div>
             {tracks.length > 0 ? <PopUpTrack artist={tracks[0]} /> : null}
             {tracks.map((track, i) => (
-                <div id="box_artist" key={track.id}>
-                    <div id="grid_box">
+                <div className="box_artist" key={track.id}>
+                    <div className="grid_box">
                         <h2>{i + 1}</h2>
                         <div><a href={track.external_urls["spotify"]}><img className="img_artist" src={image_url(track.album.images, 1)} alt="Imagen de Artista" /></a></div>
-                        <div id="names">
+                        <div className="names">
                             <h3>{track.name}</h3>
-                            <p id="genres">{return_artists(track.artists)}</p>
+                            <p className="genres">{return_artists(track.artists)}</p>
                         </div>
                         <AudioTrack url={track.preview_url} />
                     </div>

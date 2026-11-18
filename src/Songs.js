@@ -99,7 +99,7 @@ const TopSection = ({ className, data, render }) => {
         <div className={className}>
             <div className="box_artists">
                 {TIME_RANGES.map(({ key, label }) => (
-                    <div id="top_artists_component" key={key}>
+                    <div className="top_artists_component" key={key}>
                         <input type="submit" value={label} onClick={() => setRange(key)} />
                     </div>
                 ))}

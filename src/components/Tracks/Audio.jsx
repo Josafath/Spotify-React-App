@@ -49,8 +49,8 @@ function MyAudio({url}) {
   return (
     <div>
       {isPlaying
-        ? <button id="pause" aria-label="Pausar vista previa" onClick={toggle}></button>
-        : <button id="play" aria-label="Reproducir vista previa" onClick={toggle}></button>}
+        ? <button className="pause" aria-label="Pausar vista previa" onClick={toggle}></button>
+        : <button className="play" aria-label="Reproducir vista previa" onClick={toggle}></button>}
     </div>
   );
 }
