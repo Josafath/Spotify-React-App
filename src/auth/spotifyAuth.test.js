@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { getAccessToken } from './spotifyAuth';
 
 const jsonResponse = (body, ok = true) =>
@@ -14,7 +15,7 @@ const startCallback = (query) => {
 beforeEach(() => {
     localStorage.clear();
     window.history.replaceState(null, '', '/TopMusic');
-    global.fetch = jest.fn();
+    globalThis.fetch = vi.fn();
 });
 
 test('returns null when there is no session', async () => {
@@ -33,7 +34,7 @@ test('exchanges the auth code when the state matches', async () => {
     expect(body.get('grant_type')).toBe('authorization_code');
     expect(body.get('code')).toBe('abc');
     expect(body.get('code_verifier')).toBe('verifier123');
-    expect(body.get('redirect_uri')).toBe('http://localhost/TopMusic');
+    expect(body.get('redirect_uri')).toBe('http://127.0.0.1:3000/TopMusic');
     // The single-use code is removed from the URL and the one-time values are cleared.
     expect(window.location.search).toBe('');
     expect(localStorage.getItem('spotify_code_verifier')).toBeNull();

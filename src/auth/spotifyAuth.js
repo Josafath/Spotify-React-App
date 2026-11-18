@@ -2,10 +2,10 @@
 // https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow
 
 const CLIENT_ID =
-    process.env.REACT_APP_SPOTIFY_CLIENT_ID || 'd42c6ab495b64b16b144d4df732489ac';
+    import.meta.env.VITE_SPOTIFY_CLIENT_ID || 'd42c6ab495b64b16b144d4df732489ac';
 // Must be registered exactly in the Spotify Developer Dashboard.
 const REDIRECT_URI =
-    process.env.REACT_APP_SPOTIFY_REDIRECT_URI || `${window.location.origin}/TopMusic`;
+    import.meta.env.VITE_SPOTIFY_REDIRECT_URI || `${window.location.origin}/TopMusic`;
 const SCOPES = 'user-top-read';
 
 const AUTH_URL = 'https://accounts.spotify.com/authorize';

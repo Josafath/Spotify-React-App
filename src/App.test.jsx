@@ -1,9 +1,10 @@
+import { vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 import { redirectToSpotifyAuth } from './auth/spotifyAuth';
 
-jest.mock('./auth/spotifyAuth', () => ({ redirectToSpotifyAuth: jest.fn() }));
+vi.mock('./auth/spotifyAuth', () => ({ redirectToSpotifyAuth: vi.fn() }));
 
 test('starts the Spotify login when clicking sign in', () => {
   render(
