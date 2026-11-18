@@ -6,14 +6,8 @@ export function return_artists(array_artists) {
     return artists.join(', ')
 }
 
-export function return_token(old_) {
-    let cadena_token = old_;
-    const token = []
-    for (let i = 14; i < cadena_token.length; i++) {
-        if (cadena_token[i] === '&') {
-            break;
-        }
-        token.push(cadena_token[i]);
-    }
-    return token.join("");
+// Spotify returns images largest first; fall back to whatever exists.
+export function image_url(images, preferred = 0) {
+    if (!images || images.length === 0) return undefined;
+    return (images[preferred] || images[0]).url;
 }
