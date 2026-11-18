@@ -1,0 +1,31 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    min-width: 3rem;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.visual {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.up {
+    color: var(--color-accent);
+}
+
+.down,
+.same {
+    color: var(--color-text-3);
+}
+
+.new .visual {
+    padding: 4px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
+}

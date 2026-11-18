@@ -1,0 +1,128 @@
+.hero {
+    display: grid;
+    grid-template-columns: clamp(9rem, 22vw, 20rem) minmax(0, 1fr);
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        'art body'
+        'art actions';
+    column-gap: clamp(var(--space-5), 4vw, var(--space-8));
+    padding: clamp(var(--space-6), 5vw, var(--space-8)) 0 var(--space-7);
+    /* Cross-fade when the #1 changes; the element is keyed by item. */
+    animation: hero-in 280ms var(--ease-out) both;
+}
+
+.art {
+    grid-area: art;
+    align-self: end;
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: var(--radius-art);
+    background: var(--color-surface-2);
+    box-shadow: var(--shadow-art);
+}
+
+.art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.body {
+    grid-area: body;
+    align-self: end;
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+}
+
+.title {
+    font-size: var(--text-display);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    overflow-wrap: anywhere;
+}
+
+.subtitle {
+    color: var(--color-text);
+    font-size: var(--text-xl);
+    font-weight: 600;
+}
+
+/* Flows as one sentence so it wraps like text on narrow screens. */
+.context {
+    color: var(--color-text-2);
+    font-size: var(--text-sm);
+}
+
+.rank {
+    margin-right: var(--space-2);
+    color: var(--color-accent);
+    font-weight: 800;
+}
+
+.context > span:last-child {
+    min-width: 0;
+    margin-left: var(--space-2);
+    vertical-align: -1px;
+}
+
+.actions {
+    grid-area: actions;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+}
+
+@keyframes hero-in {
+    from {
+        opacity: 0.4;
+    }
+}
+
+/* Phones: art beside the text, actions below, so the ranking starts in the first screen. */
+@media (max-width: 40rem) {
+    .hero {
+        grid-template-columns: clamp(6.5rem, 30vw, 8rem) minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            'art body'
+            'actions actions';
+        column-gap: var(--space-4);
+        row-gap: var(--space-4);
+        padding: var(--space-5) 0 var(--space-6);
+    }
+
+    .art,
+    .body {
+        align-self: center;
+    }
+
+    .body {
+        gap: var(--space-1);
+    }
+
+    .title {
+        font-size: var(--text-2xl);
+        line-height: 1.05;
+    }
+
+    .subtitle {
+        font-size: var(--text-base);
+    }
+
+    .context {
+        font-size: var(--text-xs);
+    }
+
+    .actions {
+        margin-top: 0;
+    }
+}

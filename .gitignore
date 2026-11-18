@@ -11,6 +11,12 @@
 # production
 /build
 
+# design tooling scratch output (decision sketches, review captures, local config)
+/.impeccable/mocks
+/.impeccable/review
+/.impeccable/build
+/.impeccable/config.local.json
+
 # misc
 .DS_Store
 .env.local

@@ -1,0 +1,12 @@
+.blank {
+    min-height: 100dvh;
+}
+
+.center {
+    display: grid;
+    align-content: center;
+    min-height: 100dvh;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-gutter);
+}

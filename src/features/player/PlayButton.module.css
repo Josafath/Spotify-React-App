@@ -1,0 +1,36 @@
+.icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 0;
+    border-radius: 50%;
+    background: var(--color-surface-3);
+    color: var(--color-text);
+    cursor: pointer;
+    transition:
+        background-color var(--duration-fast) ease,
+        color var(--duration-fast) ease,
+        transform var(--duration-fast) ease;
+}
+
+.icon:hover {
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+
+.icon:active {
+    transform: scale(0.94);
+}
+
+/* The loaded track: an active control, so it takes the ember accent. */
+.current {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+}
+
+.current:hover {
+    background: var(--color-accent-hover);
+    color: var(--color-accent-ink);
+}

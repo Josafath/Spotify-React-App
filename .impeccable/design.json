@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T12:00:00Z",
+  "title": "Design System: Jossify",
+  "extensions": {
+    "colorMeta": {
+      "accent": { "role": "primary", "displayName": "Ember", "canonical": "#ff6a3d", "tonalRamp": ["#2a0f06", "#4d1a0a", "#7a2a10", "#b23d18", "#e2532a", "#ff6a3d", "#ff9a78", "#ffd2c2"] },
+      "accent-hover": { "role": "primary", "displayName": "Ember Glow", "canonical": "#ff8460", "tonalRamp": ["#2e1209", "#52200f", "#803418", "#b54a26", "#e56638", "#ff8460", "#ffab90", "#ffd8cb"] },
+      "accent-ink": { "role": "primary", "displayName": "Ember Ink", "canonical": "#1c0a03", "tonalRamp": ["#1c0a03", "#2e1307", "#45200e", "#5e2e16", "#7a3f20", "#99542e", "#c08060", "#e6c3b0"] },
+      "accent-soft": { "role": "primary", "displayName": "Ember Haze", "canonical": "rgb(255 106 61 / 0.14)", "tonalRamp": ["rgb(255 106 61 / 0.04)", "rgb(255 106 61 / 0.08)", "rgb(255 106 61 / 0.14)", "rgb(255 106 61 / 0.22)", "rgb(255 106 61 / 0.32)", "rgb(255 106 61 / 0.45)", "rgb(255 106 61 / 0.6)", "rgb(255 106 61 / 0.8)"] },
+      "bg": { "role": "neutral", "displayName": "Warm Night", "canonical": "#0e0d0f", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2a282e", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] },
+      "surface-1": { "role": "neutral", "displayName": "Raised Night", "canonical": "#161518", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2a282e", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] },
+      "surface-2": { "role": "neutral", "displayName": "Lifted Night", "canonical": "#1f1d22", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2a282e", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] },
+      "surface-3": { "role": "neutral", "displayName": "High Night", "canonical": "#2a282e", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2a282e", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "#2b292f", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2b292f", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] },
+      "line-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "#3a3840", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2a282e", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] },
+      "text": { "role": "neutral", "displayName": "Bone", "canonical": "#f5f4f6", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2a282e", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] },
+      "text-2": { "role": "neutral", "displayName": "Ash", "canonical": "#aeacb4", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2a282e", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] },
+      "text-3": { "role": "neutral", "displayName": "Smoke", "canonical": "#8a8790", "tonalRamp": ["#0e0d0f", "#161518", "#1f1d22", "#2a282e", "#3a3840", "#8a8790", "#aeacb4", "#f5f4f6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The #1 item's name in the hero only. Drops to clamp(1.5rem, 1rem + 3vw, 2rem) at line-height 1.05 below 40rem." },
+      "headline": { "displayName": "Headline", "purpose": "State-message titles and the landing preview's #1 name." },
+      "title": { "displayName": "Title", "purpose": "Hero artist line (600) and the list heading (700)." },
+      "body": { "displayName": "Body", "purpose": "Default copy; row names at 600." },
+      "body-sm": { "displayName": "Body Small", "purpose": "Row subtitles, album/genre column, durations, context lines, footer." },
+      "label": { "displayName": "Label", "purpose": "Buttons (700) and segmented options (600)." },
+      "rank": { "displayName": "Rank", "purpose": "Right-aligned tabular rank numerals in text-2; 1rem on phones." },
+      "column-header": { "displayName": "Column Header", "purpose": "Uppercase column-header row of the ranked list only; not a section-label pattern." }
+    },
+    "shadows": [
+      { "name": "shadow-art", "value": "0 24px 48px -16px rgb(0 0 0 / 0.65), 0 8px 16px -8px rgb(0 0 0 / 0.5)", "purpose": "The record shadow: hero #1 artwork and the landing preview's #1 cover only." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The system easing for the re-rank and hero cross-fade." },
+      { "name": "duration-fast", "value": "150ms", "purpose": "Colour, border and press-scale transitions on controls and rows." },
+      { "name": "rerank-move", "value": "560ms", "purpose": "FLIP glide of rows that changed rank on range/type switch." },
+      { "name": "rerank-enter", "value": "360ms, 160ms delay", "purpose": "Rows new to the ranking rise 8px and fade in." },
+      { "name": "rerank-exit", "value": "240ms ease-out", "purpose": "Rows that left the ranking fade out in place." },
+      { "name": "hero-crossfade", "value": "280ms", "purpose": "Hero fades in from 0.4 opacity when the #1 changes." },
+      { "name": "tint-crossfade", "value": "600ms ease", "purpose": "Artwork tint wash background-color change." },
+      { "name": "skeleton-pulse", "value": "1.6s ease-in-out infinite", "purpose": "Loading blocks pulse to 0.55 opacity." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "All animations and transitions are skipped." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "60rem" },
+      { "name": "phone", "value": "40rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Light pill for the main action, e.g. Open in Spotify or sign-in.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Open in Spotify <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 3h6v6\"/><path d=\"M10 14 21 3\"/><path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2, 0.5rem); min-height: 2.75rem; padding: 0 var(--space-5, 1.5rem); border: 1px solid transparent; border-radius: 999px; font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); font-size: 0.875rem; font-weight: 700; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease; } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--color-accent, #ff6a3d); outline-offset: 3px; } .ds-btn-primary { background: var(--color-text, #f5f4f6); color: var(--color-bg, #0e0d0f); } .ds-btn-primary:hover { background: #ffffff; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Outlined secondary pill beside a primary action.",
+      "html": "<button type=\"button\" class=\"ds-btn-ghost\">Try the demo</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: 0 1.5rem; border: 1px solid var(--color-line-strong, #3a3840); border-radius: 999px; background: transparent; color: var(--color-text, #f5f4f6); font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); font-size: 0.875rem; font-weight: 700; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease; } .ds-btn-ghost:hover { border-color: var(--color-text-3, #8a8790); background: var(--color-surface-1, #161518); } .ds-btn-ghost:active { transform: scale(0.97); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-accent, #ff6a3d); outline-offset: 3px; }"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Borderless low-emphasis action, e.g. sign out.",
+      "html": "<button type=\"button\" class=\"ds-btn-quiet\">Sign out</button>",
+      "css": ".ds-btn-quiet { display: inline-flex; align-items: center; min-height: 2.25rem; padding: 0 0.75rem; border: 0; border-radius: 999px; background: transparent; color: var(--color-text-2, #aeacb4); font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); font-size: 0.875rem; font-weight: 700; cursor: pointer; transition: background-color 150ms ease, color 150ms ease; } .ds-btn-quiet:hover { background: var(--color-surface-2, #1f1d22); color: var(--color-text, #f5f4f6); } .ds-btn-quiet:focus-visible { outline: 2px solid var(--color-accent, #ff6a3d); outline-offset: 3px; }"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "chip",
+      "refersTo": "segmented-control",
+      "description": "Pill radio group for Tracks/Artists and the time range; the checked option is ember.",
+      "html": "<fieldset class=\"ds-seg\"><label class=\"ds-seg-opt\"><input type=\"radio\" name=\"ds-range\" checked><span>4 weeks</span></label><label class=\"ds-seg-opt\"><input type=\"radio\" name=\"ds-range\"><span>6 months</span></label><label class=\"ds-seg-opt\"><input type=\"radio\" name=\"ds-range\"><span>All time</span></label></fieldset>",
+      "css": ".ds-seg { display: inline-flex; gap: 2px; min-inline-size: 0; margin: 0; padding: 3px; border: 0; border-radius: 999px; background: var(--color-surface-2, #1f1d22); font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); } .ds-seg-opt { position: relative; display: flex; } .ds-seg-opt input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; } .ds-seg-opt span { display: grid; place-items: center; min-height: 2.25rem; padding: 0 1rem; border-radius: 999px; color: var(--color-text-2, #aeacb4); font-size: 0.875rem; font-weight: 600; white-space: nowrap; transition: background-color 150ms ease, color 150ms ease; } .ds-seg-opt input:hover + span { color: var(--color-text, #f5f4f6); } .ds-seg-opt input:checked + span { background: var(--color-accent, #ff6a3d); color: var(--color-accent-ink, #1c0a03); } .ds-seg-opt input:focus-visible + span { outline: 2px solid var(--color-accent, #ff6a3d); outline-offset: 2px; }"
+    },
+    {
+      "name": "Ranked List Row",
+      "kind": "custom",
+      "refersTo": "ranked-row",
+      "description": "Signature chart row: tabular rank, movement, thumbnail, name and artist, detail, duration, open link; hairline beneath.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-row-rank\">4</span><span class=\"ds-row-move\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 12 7-7 7 7\"/><path d=\"M12 19V5\"/></svg>3</span><span class=\"ds-row-art\"></span><span class=\"ds-row-main\"><a class=\"ds-row-name\" href=\"#\">Lighthouse</a><span class=\"ds-row-sub\">Teodor Lind</span></span><span class=\"ds-row-detail\">Kitchen Light</span><span class=\"ds-row-dur\">3:44</span></div>",
+      "css": ".ds-row { position: relative; display: grid; grid-template-columns: 2.5rem 3.25rem 3rem minmax(0, 2fr) minmax(0, 1.4fr) 3.5rem; align-items: center; gap: 1rem; min-height: 4.5rem; padding: 0.75rem; border-radius: 6px; font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); color: var(--color-text, #f5f4f6); transition: background-color 150ms ease; } .ds-row::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--color-line, #2b292f); } .ds-row:hover { background: var(--color-surface-1, #161518); } .ds-row-rank { color: var(--color-text-2, #aeacb4); font-size: 1.125rem; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; } .ds-row-move { display: inline-flex; align-items: center; gap: 2px; color: var(--color-accent, #ff6a3d); font-size: 0.75rem; font-weight: 700; font-variant-numeric: tabular-nums; } .ds-row-art { width: 3rem; height: 3rem; border-radius: 4px; background: linear-gradient(135deg, #5a2a6a, #c04a8a); } .ds-row-main { display: grid; min-width: 0; } .ds-row-name { color: var(--color-text, #f5f4f6); font-weight: 600; text-decoration: none; } .ds-row-name:hover { text-decoration: underline; } .ds-row-name:focus-visible { outline: 2px solid var(--color-accent, #ff6a3d); outline-offset: 3px; border-radius: 6px; } .ds-row-sub, .ds-row-detail { color: var(--color-text-2, #aeacb4); font-size: 0.875rem; } .ds-row-dur { color: var(--color-text-3, #8a8790); font-size: 0.875rem; text-align: right; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Movement Badge (New)",
+      "kind": "chip",
+      "refersTo": "movement-new",
+      "description": "Marks an item new to the ranking versus the comparison range.",
+      "html": "<span class=\"ds-move-new\">New</span>",
+      "css": ".ds-move-new { display: inline-flex; align-items: center; padding: 4px 7px; border-radius: 999px; background: var(--color-accent-soft, rgb(255 106 61 / 0.14)); color: var(--color-accent, #ff6a3d); font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); font-size: 0.75rem; font-weight: 700; line-height: 1; letter-spacing: 0.02em; }"
+    },
+    {
+      "name": "Hero #1",
+      "kind": "custom",
+      "refersTo": "artwork-hero",
+      "description": "The #1 at poster scale: shadowed artwork, display-size name, artist line, context sentence led by an ember #1.",
+      "html": "<section class=\"ds-hero\"><div class=\"ds-hero-art\"></div><div class=\"ds-hero-body\"><h2 class=\"ds-hero-title\">Honey &amp; Rust</h2><p class=\"ds-hero-sub\">The Paper Lanterns</p><p class=\"ds-hero-ctx\"><span class=\"ds-hero-rank\">#1</span>Your most played track over the last 4 weeks</p></div></section>",
+      "css": ".ds-hero { display: grid; grid-template-columns: clamp(9rem, 22vw, 20rem) minmax(0, 1fr); align-items: end; column-gap: clamp(1.5rem, 4vw, 4rem); font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); color: var(--color-text, #f5f4f6); } .ds-hero-art { aspect-ratio: 1; border-radius: 8px; background: linear-gradient(135deg, #4a1f18, #8bc34a); box-shadow: 0 24px 48px -16px rgb(0 0 0 / 0.65), 0 8px 16px -8px rgb(0 0 0 / 0.5); } .ds-hero-body { display: grid; gap: 0.75rem; min-width: 0; } .ds-hero-title { margin: 0; font-size: clamp(2.25rem, 0.8rem + 5.2vw, 5.75rem); font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; overflow-wrap: anywhere; } .ds-hero-sub { margin: 0; font-size: 1.375rem; font-weight: 600; } .ds-hero-ctx { margin: 0; color: var(--color-text-2, #aeacb4); font-size: 0.875rem; } .ds-hero-rank { margin-right: 0.5rem; color: var(--color-accent, #ff6a3d); font-weight: 800; }"
+    },
+    {
+      "name": "Profile Pill",
+      "kind": "nav",
+      "refersTo": "profile-pill",
+      "description": "Account chip in the top bar: circular avatar plus name.",
+      "html": "<a class=\"ds-profile\" href=\"#\"><span class=\"ds-profile-avatar\">K</span><span class=\"ds-profile-name\">Listener</span></a>",
+      "css": ".ds-profile { display: inline-flex; align-items: center; gap: 0.5rem; max-width: 12rem; padding: 2px 0.75rem 2px 2px; border-radius: 999px; background: var(--color-surface-2, #1f1d22); color: var(--color-text, #f5f4f6); font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: background-color 150ms ease; } .ds-profile:hover { background: var(--color-surface-3, #2a282e); } .ds-profile:focus-visible { outline: 2px solid var(--color-accent, #ff6a3d); outline-offset: 3px; } .ds-profile-avatar { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-surface-3, #2a282e); color: var(--color-text-2, #aeacb4); font-weight: 700; }"
+    },
+    {
+      "name": "Preview Card",
+      "kind": "card",
+      "refersTo": "preview-card",
+      "description": "The one framed container: landing-page preview of a ranking, flat with a hairline border.",
+      "html": "<figure class=\"ds-card\"><div class=\"ds-card-top\"><div class=\"ds-card-art\"></div><div><p class=\"ds-card-name\">Honey &amp; Rust</p><p class=\"ds-card-ctx\"><span class=\"ds-card-rank\">#1</span> Last 4 weeks</p></div></div><figcaption class=\"ds-card-cap\">Fictional demo data</figcaption></figure>",
+      "css": ".ds-card { display: grid; gap: 1rem; margin: 0; padding: 1.5rem; border: 1px solid var(--color-line, #2b292f); border-radius: 20px; background: var(--color-surface-1, #161518); font-family: var(--font-sans, 'Figtree Variable', system-ui, sans-serif); color: var(--color-text, #f5f4f6); } .ds-card-top { display: flex; align-items: flex-end; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-line, #2b292f); } .ds-card-art { width: 7rem; height: 7rem; flex: none; border-radius: 8px; background: linear-gradient(135deg, #4a1f18, #8bc34a); box-shadow: 0 24px 48px -16px rgb(0 0 0 / 0.65), 0 8px 16px -8px rgb(0 0 0 / 0.5); } .ds-card-name { margin: 0; font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; } .ds-card-ctx { margin: 0; color: var(--color-text-2, #aeacb4); font-size: 0.875rem; } .ds-card-rank { color: var(--color-accent, #ff6a3d); font-weight: 800; } .ds-card-cap { color: var(--color-text-3, #8a8790); font-size: 0.75rem; letter-spacing: 0.02em; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Poster and the Chart",
+    "overview": "Jossify is the category-standard dark music-stats app, executed at full craft. Every ranking view has exactly two registers: the listener's #1 shown at poster scale (big square artwork, the name set at display size), and everything below it set as a precise, quiet chart, where rank numerals, movement markers and hairlines carry the information. The interface frames the user's music and otherwise stays out of the way; album and artist artwork is the only imagery and the only real colour on screen.\n\nThe ground is a near-black with a faint warm tint, raised in two tonal steps rather than with shadows. One ember accent does all the signalling, and it is rare on purpose: active controls, the #1 rank and upward movement. A single family, Figtree, builds the hierarchy through weight (600 / 700 / 800) and tight negative tracking at display size, with tabular numerals wherever numbers line up. Density is moderate: generous around the hero, compact and scannable in the list (4.5rem rows on desktop, 4rem on phones).\n\nThe world refuses the equal-card cover grid with no hierarchy, and it refuses the Spotify-green clone: Spotify green lives only inside Spotify's own logo, sign-in and attribution assets.",
+    "keyCharacteristics": [
+      "Tinted near-black ground, two raised surface steps, hairline separators.",
+      "One ember accent, reserved for active state, the #1 rank and upward/new movement.",
+      "Figtree Variable only; hierarchy by weight and tracking; tabular rank numerals.",
+      "Artwork is the only imagery: 8px-radius square covers, circular artists.",
+      "Pill-shaped controls throughout (buttons, segmented switches, profile chip).",
+      "Flat everywhere except the feature artwork, which casts the one shadow.",
+      "One authored motion moment: the in-place re-rank when the range changes."
+    ],
+    "rules": [
+      { "name": "The Earned Ember Rule", "body": "Ember means \"active\", \"#1\" or \"rising\" and nothing else. Headings, labels, decoration, borders and illustration never take the accent. If an ember element does not answer \"is this selected, the top item, or moving up?\", it is wrong.", "section": "colors" },
+      { "name": "The Green Belongs to Spotify Rule", "body": "Spotify green appears only inside Spotify's own logo, sign-in and attribution assets, never as a Jossify UI colour.", "section": "colors" },
+      { "name": "The Tint Floor Rule", "body": "Anything that can sit over the artwork tint (the hero, the list header, the first rows) uses `text-2` or brighter. `text-3` never sits on the tint.", "section": "colors" },
+      { "name": "The Tabular Rank Rule", "body": "Every number that lines up with another number (ranks, movement places, durations) uses tabular numerals.", "section": "typography" },
+      { "name": "The Weight Ladder Rule", "body": "Hierarchy comes from Figtree's weight and size, not from new families, italics or colour: 800 for the poster and wordmark, 700 for ranks, headings and buttons, 600 for names and controls, 400 for everything else.", "section": "typography" },
+      { "name": "The Shared Grid Rule", "body": "A ranked list's header and rows read from one column template, so every column lines up at every width.", "section": "layout" },
+      { "name": "The Only Shadow Is the Record Rule", "body": "Only feature artwork casts a shadow. Cards, buttons, rows, menus and the top bar are flat; separate them with a tonal step or a hairline instead.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** keep ember for checked controls, the #1 rank, upward movement and \"New\", plus the focus ring and selection (The Earned Ember Rule).",
+      "**Do** put `accent-ink` on every ember fill, and `bg` on every `text`-filled button.",
+      "**Do** use tabular numerals for ranks, movement places and durations.",
+      "**Do** separate surfaces with a tonal step or a 1px `line` hairline.",
+      "**Do** show artwork at 8px radius (4px for list thumbnails) and clip artists to a circle.",
+      "**Do** keep anything that can sit on the artwork tint at `text-2` or brighter.",
+      "**Do** keep motion to transform and opacity on `cubic-bezier(0.16, 1, 0.3, 1)`, and skip it under reduced motion."
+    ],
+    "donts": [
+      "**Don't** use Spotify green anywhere except inside Spotify's own logo, sign-in and attribution assets.",
+      "**Don't** add shadows to anything but feature artwork.",
+      "**Don't** put `text-3` over the artwork tint.",
+      "**Don't** set the ranking as a grid of equal cover cards; the #1 leads at poster scale and the rest is a list.",
+      "**Don't** place a label or kicker above the hero title; context goes in the sentence below it.",
+      "**Don't** introduce a second typeface or a second accent colour.",
+      "**Don't** add new motion moments beyond the re-rank; state changes are 150ms colour transitions."
+    ]
+  }
+}
