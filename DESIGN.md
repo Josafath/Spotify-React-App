@@ -193,7 +193,7 @@ The world refuses the equal-card cover grid with no hierarchy, and it refuses th
 - Artwork is the only imagery: 8px-radius square covers, circular artists.
 - Pill-shaped controls throughout (buttons, segmented switches, profile chip).
 - Flat everywhere except the feature artwork, which casts the one shadow.
-- One authored motion moment: the in-place re-rank when the range changes.
+- Motion with a job: a poster entrance on first view, and the in-place re-rank when the range changes.
 
 ## Colors
 
@@ -316,7 +316,20 @@ Confident light pills that defer to the artwork.
 - Mirrors the hero and list geometry with `surface-2` blocks (6px radius, 8px for the art, 4px for thumbs) pulsing to 0.55 opacity over 1.6s.
 
 ### Motion
-One authored moment: when the range or type changes, the list re-ranks in place (FLIP). Rows that left fade out where they were (240ms ease-out), rows that stayed glide to their new place (560ms), and new rows rise 8px and fade in (360ms after a 160ms delay), all on `cubic-bezier(0.16, 1, 0.3, 1)` and transform/opacity only. The hero cross-fades from 0.4 opacity over 280ms when the #1 changes; the artwork tint cross-fades over 600ms. The player bar slides up once (320ms) when it first opens. Everything else is a 150ms colour transition. All of it is skipped under `prefers-reduced-motion`.
+Two kinds of authored motion, both transform/opacity only on `cubic-bezier(0.16, 1, 0.3, 1)` (GSAP `expo.out`).
+
+**Entrances (GSAP, `src/lib/motion/`).** Rare moments get the delight budget; frequent ones stay short.
+- **Landing (once per visit):** the headline rises word by word out of per-word masks (900ms, 70ms stagger); lead, actions and facts follow (16px rise, 700ms, 80ms stagger); the preview card rises 32px from 0.98 scale, its #1 cover scales in from 0.9 and its rows stagger in (50ms).
+- **Landing preview re-rank:** a compact 4 weeks / 6 months switch inside the card. After the entrance, if the card is on screen and motion is allowed, it switches once on its own (2.6s) to demonstrate the re-rank; after that it changes only when the visitor asks. A new #1 cross-fades in (8px, 350ms).
+- **The #1 reveal (signature):** plays the first time each view (tracks or artists × 4 weeks, 6 months, all time) shows its #1 in a visit, even when two ranges share the same #1. Returning to a view already seen uses the short hand-off. The frame rises 24px from 0.94 scale (900ms). Once the cover has loaded (at most 700ms wait), the picture is revealed by kind: a **track** cover wipes up into its frame like a sleeve pulled from a crate (`inset` clip), an **artist** portrait opens as an iris (`circle` clip). Both settle from 1.25 zoom over 1.4s (`power3.out`, 150ms delay). Then one band of light (22% white, 110°) crosses the artwork (1s, `power2.inOut`). The title's words rise out of masks (800ms, 50ms stagger), subtitle, context and actions follow (12px, 600ms, 60ms stagger), and the ember "#1" lands last with a small overshoot (from 0.4 scale, 700ms, `back.out(1.6)`), the only bounce in the system. The clip sits on the image, never the frame, so the record shadow is never cut. The first 12 rows follow (16px, 600ms, 35ms stagger, 350ms delay); rows below the fold are already in place.
+- **Returning to a view already seen:** a short hand-off under 400ms: artwork from 0.4 opacity and 0.98 scale (300ms), words from 40% below (350ms, 15ms stagger), the rest from 0.4 opacity; a new list's first 12 rows stagger in at 25ms.
+- **Pointer tilt:** the hero artwork (5°) and the landing preview card (3°) tilt toward a fine pointer, 600ms `power3.out`. Never on touch.
+
+**The re-rank (WAAPI, `useFlipList`).** When the range changes, the list re-ranks in place (FLIP). Rows that left fade out where they were (240ms ease-out), rows that stayed glide to their new place (560ms), and new rows rise 8px and fade in (360ms after a 160ms delay). It runs on the compositor through the Web Animations API rather than GSAP, so it stays smooth while new data renders. A range change during a row entrance lands the entrance first so the two never fight.
+
+The artwork tint cross-fades over 600ms. The player bar slides up once (320ms) when it first opens. Everything else is a 150ms colour transition.
+
+**Reduced motion:** no entrances, tilt, auto-demo or re-rank. The only thing kept is a 280ms opacity cross-fade on the hero when the #1 changes, so the change is still legible.
 
 ## Do's and Don'ts
 
@@ -328,6 +341,7 @@ One authored moment: when the range or type changes, the list re-ranks in place 
 - **Do** show artwork at 8px radius (4px for list thumbnails) and clip artists to a circle.
 - **Do** keep anything that can sit on the artwork tint at `text-2` or brighter.
 - **Do** keep motion to transform and opacity on `cubic-bezier(0.16, 1, 0.3, 1)`, and skip it under reduced motion.
+- **Do** write GSAP animations with `useMotion` / `usePointerTilt` from `src/lib/motion/hooks.ts`, importing `gsap` from `src/lib/motion/gsap.ts`, so reduced motion, cleanup and defaults come for free.
 
 ### Don't:
 - **Don't** use Spotify green anywhere except inside Spotify's own logo, sign-in and attribution assets.
@@ -336,4 +350,6 @@ One authored moment: when the range or type changes, the list re-ranks in place 
 - **Don't** set the ranking as a grid of equal cover cards; the #1 leads at poster scale and the rest is a list.
 - **Don't** place a label or kicker above the hero title; context goes in the sentence below it.
 - **Don't** introduce a second typeface or a second accent colour.
-- **Don't** add new motion moments beyond the re-rank; state changes are 150ms colour transitions.
+- **Don't** animate frequent actions (hover, segmented switches, play/pause) beyond 150ms colour transitions and press scale; entrances belong to first views and new content.
+- **Don't** animate rows on scroll or move data the user is reading; only the first screen enters in sequence.
+- **Don't** loop motion on its own: the landing preview demonstrates the re-rank once, then waits for the visitor.

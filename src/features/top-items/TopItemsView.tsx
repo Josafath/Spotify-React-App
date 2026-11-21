@@ -1,4 +1,4 @@
-import { useMemo, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { useSearchParams } from 'react-router';
 import { RotateCw } from 'lucide-react';
 import { buttonClass } from '@/components/button';
@@ -66,6 +66,17 @@ export function TopItemsView({ account, banner }: TopItemsViewProps) {
     const [top, ...rest] = items;
     const tint = useArtworkTint(pickImage(top?.images, 64));
 
+    // The #1 reveal plays the first time each view (type + range) shows its #1 in a visit: 4 weeks,
+    // 6 months and all time, for tracks and for artists. Coming back to a view already seen uses the
+    // short hand-off. Keyed by view as well as item, so the reveal plays even when two ranges share a #1.
+    const view = `${type}:${range}`;
+    const [introduced, setIntroduced] = useState<ReadonlySet<string>>(() => new Set());
+    const hasTop = top !== undefined;
+    const intro = introduced.has(view) ? 'quick' : 'full';
+    useEffect(() => {
+        if (hasTop && !introduced.has(view)) setIntroduced((prev) => new Set(prev).add(view));
+    }, [hasTop, view, introduced]);
+
     let content: ReactNode;
     if (current.isPending) {
         content = <TopItemsSkeleton />;
@@ -93,11 +104,12 @@ export function TopItemsView({ account, banner }: TopItemsViewProps) {
         content = (
             <>
                 <HeroItem
-                    key={top.id}
+                    key={`${view}:${top.id}`}
                     item={top}
                     rangePhrase={rangeInfo.phrase}
                     movement={movements?.get(top.id)}
                     againstLabel={againstLabel}
+                    intro={intro}
                 />
                 {rest.length > 0 ? (
                     <section aria-labelledby="ranking-title">
@@ -118,6 +130,7 @@ export function TopItemsView({ account, banner }: TopItemsViewProps) {
                             movements={movements}
                             againstLabel={againstLabel}
                             label={`Top ${noun} 2 to ${items.length}`}
+                            intro={intro}
                         />
                     </section>
                 ) : null}

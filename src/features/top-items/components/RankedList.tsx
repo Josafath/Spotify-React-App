@@ -1,5 +1,7 @@
-import { useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { Clock3, ExternalLink } from 'lucide-react';
+import { gsap } from '@/lib/motion/gsap';
+import { useMotion } from '@/lib/motion/hooks';
 import { formatDuration, pickImage } from '@/lib/spotify/images';
 import type { DisplayItem } from '../displayItem';
 import type { Movement } from '../movement';
@@ -15,13 +17,46 @@ interface RankedListProps {
     movements: Map<string, Movement> | null;
     againstLabel: string;
     label: string;
+    /** "full" waits for the hero's poster entrance; "quick" follows a short hand-off. Read once on mount. */
+    intro?: 'full' | 'quick';
 }
 
+/** Only the rows a first screen can show enter in sequence; the rest are already in place below the fold. */
+const INTRO_ROWS = 12;
+
 /** Ranks 2-40 as precise rows, for tracks and artists alike. Re-ranks in place when the range changes. */
-export function RankedList({ kind, items, startRank, movements, againstLabel, label }: RankedListProps) {
+export function RankedList({ kind, items, startRank, movements, againstLabel, label, intro = 'quick' }: RankedListProps) {
     const listRef = useRef<HTMLOListElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
-    useFlipList(listRef, overlayRef, items.map((item) => item.id).join('|'));
+    const introTween = useRef<gsap.core.Tween | null>(null);
+    const orderKey = items.map((item) => item.id).join('|');
+
+    // Entrance on mount (a new list: first load or tracks/artists switch). Range changes re-rank instead.
+    useMotion(
+        () => {
+            const rows = gsap.utils.toArray<HTMLElement>('[data-flip-id]').slice(0, INTRO_ROWS);
+            introTween.current = gsap.from(rows, {
+                opacity: 0,
+                y: 16,
+                duration: intro === 'full' ? 0.6 : 0.45,
+                stagger: intro === 'full' ? 0.035 : 0.025,
+                delay: intro === 'full' ? 0.35 : 0.05,
+                clearProps: 'opacity,transform',
+            });
+        },
+        { scope: listRef },
+    );
+
+    // If the range changes mid-entrance, land the entrance first so it never fights the re-rank.
+    // Declared before useFlipList so it runs before the re-rank measures and animates.
+    const introKey = useRef(orderKey);
+    useLayoutEffect(() => {
+        if (orderKey === introKey.current) return;
+        const tween = introTween.current;
+        if (tween && tween.progress() < 1) tween.progress(1);
+    }, [orderKey]);
+
+    useFlipList(listRef, overlayRef, orderKey);
     const isTrack = kind === 'track';
 
     return (
