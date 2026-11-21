@@ -9,6 +9,26 @@
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.json" />
         <title>Jossify · Your listening, ranked</title>
+        <script>
+            // Warm up Spotify's API and image servers while the app downloads, only on the signed-in
+            // ranking: the landing page and the demo never talk to Spotify, so they don't pay for it.
+            if (location.pathname === '/TopMusic') {
+                var origins = [
+                    ['https://api.spotify.com', true],
+                    ['https://i.scdn.co', false],
+                ];
+                // Coming back from Spotify's sign-in: the code is exchanged for a token first.
+                if (/[?&]code=/.test(location.search)) origins.unshift(['https://accounts.spotify.com', true]);
+                origins.forEach(function (origin) {
+                    var link = document.createElement('link');
+                    link.rel = 'preconnect';
+                    link.href = origin[0];
+                    // API calls are CORS requests; cover images are plain image loads.
+                    if (origin[1]) link.crossOrigin = 'anonymous';
+                    document.head.appendChild(link);
+                });
+            }
+        </script>
     </head>
     <body>
         <div id="root"></div>
