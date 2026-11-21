@@ -1,0 +1,15 @@
+/* Clips each word so it can rise from below its own baseline. The padding/negative margin
+   pairs give descenders and overhanging glyphs room without changing the line box. */
+.mask {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    vertical-align: top;
+    padding: 0 0.06em 0.12em;
+    margin: 0 -0.06em -0.12em;
+}
+
+.word {
+    display: inline-block;
+    max-width: 100%;
+}

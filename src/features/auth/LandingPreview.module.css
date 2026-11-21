@@ -51,6 +51,28 @@
     font-weight: 800;
 }
 
+.switch {
+    justify-self: start;
+}
+
+/* Compact options: the preview is a miniature of the ranking screen. */
+.switch label > span {
+    min-height: 2rem;
+    padding: 0 var(--space-3);
+    font-size: var(--text-xs);
+}
+
+/* The offset parent for the rows and the overlay, so ghost rows land where they were. */
+.rowsWrap {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
 .rows {
     display: grid;
 }

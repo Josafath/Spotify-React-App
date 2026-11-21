@@ -16,6 +16,12 @@ export default defineConfig({
     build: {
         // Firebase Hosting serves ./build.
         outDir: 'build',
+        rollupOptions: {
+            output: {
+                // GSAP changes far less often than app code: its own chunk stays cached across deploys.
+                manualChunks: (id) => (id.includes('node_modules/gsap') || id.includes('node_modules/@gsap') ? 'gsap' : undefined),
+            },
+        },
     },
     test: {
         environment: 'jsdom',
