@@ -14,7 +14,7 @@ import { TopBar } from './components/TopBar';
 import { TopItemsSkeleton } from './components/TopItemsSkeleton';
 import { artistToDisplay, trackToDisplay, type DisplayItem } from './displayItem';
 import { computeMovement } from './movement';
-import { useTopItems } from './queries';
+import { usePrefetchViews, useTopItems } from './queries';
 import { getRange, parseRange, parseType } from './ranges';
 import { useArtworkTint } from './useArtworkTint';
 import styles from './TopItemsView.module.css';
@@ -40,6 +40,8 @@ export function TopItemsView({ account, banner }: TopItemsViewProps) {
 
     const current = useTopItems(type, range);
     const previous = useTopItems(type, rangeInfo.compareTo);
+    // When what's on screen has settled, quietly load the other views so switching is instant.
+    usePrefetchViews(type, current.isSuccess && !previous.isFetching);
 
     const items = useMemo(() => (current.data ? toDisplay(type, current.data) : []), [type, current.data]);
     const hasComparison = rangeInfo.compareTo !== null;
