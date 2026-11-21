@@ -20,7 +20,7 @@
     --color-accent-ink: #1c0a03;
     --color-accent-soft: rgb(255 106 61 / 0.14);
 
-    --font-sans: 'Figtree Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-sans: 'Figtree Variable', 'Figtree Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;

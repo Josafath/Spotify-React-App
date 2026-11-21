@@ -228,8 +228,10 @@ The ranking view washes its top band (up to `min(40rem, 90vh)`) with a colour sa
 
 ## Typography
 
-**Display Font:** Figtree Variable (with ui-sans-serif, system-ui, -apple-system, Segoe UI fallbacks)
+**Display Font:** Figtree Variable (with Figtree Fallback, ui-sans-serif, system-ui, -apple-system, Segoe UI fallbacks)
 **Body Font:** Figtree Variable (same stack)
+
+**Figtree Fallback** is not a second typeface: it is local Arial resized to Figtree's width and line metrics (`size-adjust`, `ascent-override`, `descent-override` in `global.css`), shown only until Figtree loads so the swap never shifts the layout. The Latin Figtree file is preloaded from `index.html` at build time.
 
 **Character:** One friendly geometric-humanist sans doing everything. At display size it goes heavy (800) and tight (-0.035em) so a track name reads like a poster; at list size it is calm 600/400 with tabular numerals.
 

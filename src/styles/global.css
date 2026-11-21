@@ -1,6 +1,35 @@
 @import '@fontsource-variable/figtree';
 @import './tokens.css';
 
+/*
+ * Metric-matched fallback: until Figtree arrives, text renders in Arial resized to Figtree's
+ * width and line metrics, so the swap doesn't reflow the page (no layout shift). Values measured
+ * in Chrome with canvas TextMetrics on representative copy: Figtree ascent 0.95em, descent 0.25em;
+ * width ratio to Arial 1.007 at 400 and 0.981 at 800 vs Arial Bold. Overrides are divided by
+ * size-adjust because the browser scales them by it.
+ */
+@font-face {
+    font-family: 'Figtree Fallback';
+    font-style: normal;
+    font-weight: 300 549;
+    src: local('Arial'), local('ArialMT');
+    size-adjust: 100.7%;
+    ascent-override: 94.34%;
+    descent-override: 24.83%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: 'Figtree Fallback';
+    font-style: normal;
+    font-weight: 550 900;
+    src: local('Arial Bold'), local('Arial-BoldMT');
+    size-adjust: 98.1%;
+    ascent-override: 96.84%;
+    descent-override: 25.48%;
+    line-gap-override: 0%;
+}
+
 *,
 *::before,
 *::after {
