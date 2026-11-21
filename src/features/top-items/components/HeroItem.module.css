@@ -7,11 +7,11 @@
         'art actions';
     column-gap: clamp(var(--space-5), 4vw, var(--space-8));
     padding: clamp(var(--space-6), 5vw, var(--space-8)) 0 var(--space-7);
-    /* Cross-fade when the #1 changes; the element is keyed by item. */
-    animation: hero-in 280ms var(--ease-out) both;
+    /* Entrance and #1 hand-off are animated by GSAP in HeroItem.tsx. */
 }
 
 .art {
+    position: relative;
     grid-area: art;
     align-self: end;
     display: block;
@@ -30,6 +30,15 @@
 
 .round {
     border-radius: 50%;
+}
+
+/* One band of light that crosses the #1 artwork during its reveal; invisible at rest. */
+.sheen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / 0.22) 50%, transparent 65%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .body {
@@ -61,6 +70,8 @@
 }
 
 .rank {
+    /* Inline-block so the entrance can scale it. */
+    display: inline-block;
     margin-right: var(--space-2);
     color: var(--color-accent);
     font-weight: 800;
@@ -79,12 +90,6 @@
     align-items: center;
     gap: var(--space-3);
     margin-top: var(--space-5);
-}
-
-@keyframes hero-in {
-    from {
-        opacity: 0.4;
-    }
 }
 
 /* Phones: art beside the text, actions below, so the ranking starts in the first screen. */

@@ -44,6 +44,7 @@
 ```
 src/
 ├── app/                  App shell: routes and the QueryClient (retry policy)
+├── lib/motion/           GSAP setup and hooks (reduced motion, cleanup, pointer tilt)
 ├── lib/spotify/          Infrastructure, no React
 │   ├── auth.ts           PKCE flow, token storage and refresh
 │   ├── client.ts         Typed fetch client and SpotifyApiError
@@ -53,7 +54,7 @@ src/
 │   ├── auth/             Start page and its live preview
 │   ├── top-items/        The ranking screen
 │   │   ├── musicSource.ts    MusicSource interface + Spotify implementation
-│   │   ├── queries.ts        TanStack Query hooks
+│   │   ├── queries.ts        TanStack Query hooks + idle prefetch of other views
 │   │   ├── movement.ts       Rank comparison between ranges (pure)
 │   │   ├── displayItem.ts    Track/Artist → one view model
 │   │   └── components/       Hero, track list, artist grid, top bar…
@@ -76,6 +77,10 @@ flowchart LR
 - **One UI, swappable data source.** Screens only know the `MusicSource` interface, provided through React context. The Spotify and demo pages are the same component tree with a different source, which also makes the UI easy to test.
 - **Pure logic, kept out of components.** Ranking movement (`movement.ts`), range metadata and the display model are plain functions with their own unit tests.
 - **Errors carry meaning.** `SpotifyApiError` exposes `isAuthError` and `isRateLimited`. The UI turns them into specific recovery actions, and the query client skips retries on errors a retry cannot fix.
+- **Switching views is instant.** Once the current view settles, the other ranges and the other type load one at a time in idle slots, skipping cached views and stopping at the first error, so a range change re-ranks in place instead of showing a skeleton.
+- **No layout shift while fonts load.** The Latin Figtree file is preloaded from `index.html` (a small Vite plugin finds the hashed file at build time), and until it arrives text renders in a metric-matched Arial fallback (`size-adjust` and ascent/descent overrides).
+- **Spotify connections warm up early, only where used.** An inline script in `index.html` preconnects to the API and image servers on `/TopMusic` only (plus the accounts server when returning from sign-in), and the #1 cover, the LCP element, loads with `fetchpriority="high"`.
+- **Motion that costs little.** GSAP lives in its own cached chunk; `useMotion` creates animations only when `prefers-reduced-motion` allows them and reverts them on unmount. Entrances use transform and opacity only, and the re-rank runs on the compositor through the Web Animations API.
 - **The auth code is exchanged exactly once.** Concurrent callers (for example React StrictMode effects) share one in-flight promise, the code is removed from the URL straight away, and `state` is checked to prevent CSRF.
 - **Typed end to end.** Strict TypeScript with `noUncheckedIndexedAccess`; Spotify fields that are no longer guaranteed (such as `genres`) are optional in the types and handled in the UI.
 
